@@ -3,9 +3,6 @@
 template <typename T>
 LinkedList<T>::LinkedList() : head_(), tail_(), size_(0) {}
 
-template <typename T>
-LinkedList<T>::~LinkedList() {}
-
 
 template <typename T>
 int LinkedList<T>::size() const {
@@ -13,7 +10,7 @@ int LinkedList<T>::size() const {
 }
 
 template <typename T>
-int LinkedList<T>::empty() const {
+bool LinkedList<T>::empty() const {
     return size_ == 0;
 }
 

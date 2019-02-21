@@ -7,10 +7,10 @@ template <typename T>
 class LinkedList {
 public:
     LinkedList();
-    ~LinkedList();
+    ~LinkedList() = default;
 
     int size() const;
-    int empty() const;
+    bool empty() const;
     T at(int index) const;
     T front() const;
     T back() const;
