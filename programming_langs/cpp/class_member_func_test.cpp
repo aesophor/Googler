@@ -27,6 +27,9 @@ int main() {
     Circle* circle;
     Ellipse ellipse;
     circle = &ellipse;
+
     circle->area(); // Calculating ellipse area
+    (&ellipse)->Circle::area(); // Calculating circle area
+
     // this behavior is same with java
 }
