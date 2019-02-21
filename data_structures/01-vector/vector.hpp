@@ -1,38 +1,38 @@
 #ifndef VECTOR_HPP_
 #define VECTOR_HPP_
 
+#include "../00-container/container.hpp"
 #include <string>
 
 #define DEFAULT_SIZE 4
 
 template <typename T>
-class Vector {
+class Vector : public Container<T> {
 public:
     Vector(int initial_capacity=DEFAULT_SIZE);
-    ~Vector() = default;
+    virtual ~Vector() = default;
 
-    int size() const;
+    virtual int size() const override;
+    virtual bool empty() const override;
+    virtual T at(int index) const override;
+
+    virtual void push_back(T value) override;
+    virtual void push_front(T value) override;
+    virtual T pop_front() override;
+    virtual T pop_back() override;
+
+    virtual void insert(int index, T value) override;
+    virtual void erase(int index) override;
+    virtual void remove(T value) override;
+    virtual int find(T value) override;
+
     int capacity() const;
-    bool empty() const;
-    T at(int index) const;
-
-    void push_back(T value);
-    void push_front(T value);
-    T pop_front();
-    T pop_back();
-
-    void insert(int index, T value);
-    void erase(int index);
-    void remove(T value);
-    int find(T value);
-
     std::string ToString() const;
 
 private:
     void resize(int new_capacity);
 
     T* data_;
-    int size_;
     int capacity_;
 };
 

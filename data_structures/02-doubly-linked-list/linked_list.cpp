@@ -1,37 +1,32 @@
 #include "linked_list.hpp"
+#include <stdexcept>
 
 template <typename T>
-LinkedList<T>::LinkedList() : head_(), tail_(), size_(0) {}
+LinkedList<T>::LinkedList() : Container<T>(), head_(), tail_() {}
 
 
 template <typename T>
 int LinkedList<T>::size() const {
-    return size_;
+    return this->size_;
 }
 
 template <typename T>
 bool LinkedList<T>::empty() const {
-    return size_ == 0;
+    return this->size_ == 0;
 }
 
 template <typename T>
 T LinkedList<T>::at(int index) const {
+    if (index >= this->size_) {
+        throw std::out_of_range("LinkedList<T>::at() : index out of range");
+    }
+
     int i = 0;
     for (Node* ptr = head_; ptr; ptr = ptr->next, i++) {
         if (i == index) {
             return ptr->data;
         }
     }
-}
-
-template <typename T>
-T LinkedList<T>::front() const {
-    return head_;
-}
-
-template <typename T>
-T LinkedList<T>::back() const {
-    return tail_;
 }
 
 
@@ -48,7 +43,7 @@ void LinkedList<T>::push_front(T value) {
     }
 
     head_ = new_node;
-    size_++;
+    this->size_++;
 }
 
 template <typename T>
@@ -64,43 +59,47 @@ void LinkedList<T>::push_back(T value) {
     }
 
     tail_ = new_node;
-    size_++;
+    this->size_++;
 }
 
 template <typename T>
 T LinkedList<T>::pop_front() {
-    if (head_) {
-        Node* old_head = head_;
-        T old_head_data = old_head->data;
-
-        head_ = old_head->next;
-        if (head_) {
-            head_->prev = nullptr;
-        } else {
-            tail_ = nullptr;
-        }
-        delete old_head;
-        size_--;
-        return old_head_data;
+    if (!head_) {
+        throw std::out_of_range("LinkedList<T>::pop_front() : index out of range");
     }
+
+    Node* old_head = head_;
+    T old_head_data = old_head->data;
+
+    head_ = old_head->next;
+    if (head_) {
+        head_->prev = nullptr;
+    } else {
+        tail_ = nullptr;
+    }
+    delete old_head;
+    this->size_--;
+    return old_head_data;
 }
 
 template <typename T>
 T LinkedList<T>::pop_back() {
-    if (tail_) {
-        Node* old_tail = tail_;
-        T old_tail_data = old_tail->data;
-
-        tail_ = old_tail->prev;
-        if (tail_) {
-            tail_->next = nullptr;
-        } else {
-            head_ = nullptr;
-        }
-        delete old_tail;
-        size_--;
-        return old_tail_data;
+    if (!tail_) {
+        throw std::out_of_range("LinkedList<T>::pop_front() : index out of range");
     }
+
+    Node* old_tail = tail_;
+    T old_tail_data = old_tail->data;
+
+    tail_ = old_tail->prev;
+    if (tail_) {
+        tail_->next = nullptr;
+    } else {
+        head_ = nullptr;
+    }
+    delete old_tail;
+    this->size_--;
+    return old_tail_data;
 }
 
 template <typename T>
@@ -113,7 +112,7 @@ void LinkedList<T>::insert(int index, T value) {
             new_node->next = ptr->next;
             ptr->next = new_node;
             new_node->prev = ptr;
-            size_++;
+            this->size_++;
         }
     }
 }
@@ -127,24 +126,45 @@ void LinkedList<T>::erase(int index) {
             ptr->prev->next = ptr->next;
             ptr->next->prev = ptr->prev;
             delete target_node;
-            size_--;
+            this->size_--;
             return;
         }
     }
 }
 
 template <typename T>
-void LinkedList<T>::remove_value(T value) {
+void LinkedList<T>::remove(T value) {
     for (Node* ptr = head_; ptr; ptr = ptr->next) {
         if (ptr->data == value) {
             Node* target_node = ptr;
             ptr->prev->next = ptr->next;
             ptr->next->prev = ptr->prev;
             delete target_node;
-            size_--;
-            return;
+            this->size_--;
         }
     }
+}
+
+template <typename T>
+int LinkedList<T>::find(T value) {
+    int i = 0;
+    for (Node* ptr = head_; ptr; ptr = ptr->next, i++) {
+        if (ptr->data == value) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+
+template <typename T>
+T LinkedList<T>::front() const {
+    return head_;
+}
+
+template <typename T>
+T LinkedList<T>::back() const {
+    return tail_;
 }
 
 template <typename T>
