@@ -12,19 +12,34 @@ public:
 
     virtual int size() const override;
     virtual bool empty() const override;
-    virtual T at(int index) const override;
 
-    virtual void push_back(T value) override;
-    virtual void push_front(T value) override;
-    virtual T pop_front() override;
-    virtual T pop_back() override;
+    T top() const;
+    void push(T value);
+    T pop();
 
-    virtual void insert(int index, T value) override;
-    virtual void erase(int index) override;
-    virtual void remove(T value) override;
-    virtual int find(T value) override;
+    std::string ToString() const;
+
+protected:
+    virtual T at(int index) const {}
+
+    virtual void push_back(T value) {}
+    virtual void push_front(T value) {}
+    virtual T pop_front() {}
+    virtual T pop_back() {}
+
+    virtual void insert(int index, T value) {}
+    virtual void erase(int index) {}
+    virtual void remove(T value) {}
+    virtual int find(T value) {}
 
 private:
+    struct Node {
+        Node(T value) : data(value) {}
+        Node* next;
+        T data;
+    };
+
+    Stack::Node* top_;
 };
 
 #endif
