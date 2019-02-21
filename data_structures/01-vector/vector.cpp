@@ -1,6 +1,5 @@
 #include "vector.hpp"
 #include <stdexcept>
-#include <iostream>
 
 template <typename T>
 Vector<T>::Vector(int initial_capacity) 
@@ -121,8 +120,6 @@ void Vector<T>::resize(int new_capacity) {
     delete data_;
     data_ = new_data;
     capacity_ = new_capacity;
-
-    std::cout << "resized to: " << std::to_string(new_capacity) << std::endl;
 }
 
 
