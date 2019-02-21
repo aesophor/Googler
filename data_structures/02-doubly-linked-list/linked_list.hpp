@@ -1,7 +1,7 @@
 #ifndef LINKED_LIST_HPP_
 #define LINKED_LIST_HPP_
 
-#include "../00-container/container.hpp"
+#include "container.hpp"
 #include <string>
 
 template <typename T>

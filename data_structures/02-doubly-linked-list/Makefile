@@ -1,5 +1,5 @@
 CXX=g++
-CXXFLAGS=-g -std=c++14 -flto -Os -Wall
+CXXFLAGS=-g -std=c++14 -I../include/ -flto -Os -Wall
 BIN=test
 SRC=$(wildcard *.cpp)
 

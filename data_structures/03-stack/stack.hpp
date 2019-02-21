@@ -1,16 +1,14 @@
-#ifndef VECTOR_HPP_
-#define VECTOR_HPP_
+#ifndef STACK_HPP_
+#define STACK_HPP_
 
 #include "container.hpp"
 #include <string>
 
-#define DEFAULT_SIZE 4
-
 template <typename T>
-class Vector : public Container<T> {
+class Stack : public Container<T> {
 public:
-    Vector(int initial_capacity=DEFAULT_SIZE);
-    virtual ~Vector() = default;
+    Stack();
+    virtual ~Stack() = default;
 
     virtual int size() const override;
     virtual bool empty() const override;
@@ -26,14 +24,7 @@ public:
     virtual void remove(T value) override;
     virtual int find(T value) override;
 
-    int capacity() const;
-    std::string ToString() const;
-
 private:
-    void resize(int new_capacity);
-
-    T* data_;
-    int capacity_;
 };
 
 #endif
