@@ -13,7 +13,6 @@ public:
     using Vector<T>::size;
     using Vector<T>::empty;
     using Vector<T>::push_back;
-    using Vector<T>::push_front;
     using Vector<T>::pop_back;
 
     virtual T top() const;
