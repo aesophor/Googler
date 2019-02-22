@@ -27,9 +27,9 @@ public:
     virtual int find(T value) override;
 
     int capacity() const;
-    std::string ToString() const;
+    virtual std::string ToString() const;
 
-private:
+protected:
     void resize(int new_capacity);
 
     T* data_;

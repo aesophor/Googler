@@ -6,10 +6,12 @@ using std::endl;
 
 int main() {
     Stack<int> stack;
-    stack.push(8);
-    stack.push(7);
-    stack.push(6);
-    stack.push(0);
-    stack.push(3);
+    stack.push_back(8);
+    stack.push_back(7);
+    stack.push_back(6);
+    stack.push_back(0);
+    stack.push_back(3);
     cout << stack.ToString() << endl;
+
+    //((Vector<int>) stack)->push_front(1);
 }
