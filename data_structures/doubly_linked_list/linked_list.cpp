@@ -159,12 +159,12 @@ int LinkedList<T>::find(T value) {
 
 template <typename T>
 T LinkedList<T>::front() const {
-    return head_;
+    return head_->data;
 }
 
 template <typename T>
 T LinkedList<T>::back() const {
-    return tail_;
+    return tail_->data;
 }
 
 template <typename T>
