@@ -2,10 +2,6 @@
 #include <stdexcept>
 
 template <typename T>
-Stack<T>::Stack() : Vector<T>() {}
-
-
-template <typename T>
 T Stack<T>::top() const {
     if (!this->size_ == 0) {
         throw std::out_of_range("Stack<T>::top() : index out of range");

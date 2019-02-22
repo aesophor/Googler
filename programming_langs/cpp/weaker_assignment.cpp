@@ -4,16 +4,22 @@ using namespace std;
 
 class A {
 public:
-    virtual void method() { cout << "calling A method" << endl; }
+    virtual void method() {
+        cout << "calling A method" << endl;
+    }
 };
 
-class B : public A { 
+class B : private A { 
 private:
-    void method() { cout << "calling B method" << endl; }
+    void method() override {
+        cout << "calling B method" << endl;
+    }
 };
 
 int main(void) {
-    A* obj = new B();
-    ((B*) obj)->method();
-    obj->method(); // B::method is invoked, despite it being private
+    B b = B();
+    ((A&) b).method();
 }
+
+
+

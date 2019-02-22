@@ -1,13 +1,13 @@
 #ifndef STACK_HPP_
 #define STACK_HPP_
 
-#include "../01-vector/vector.cpp"
+#include "../vector/vector.cpp"
 #include <string>
 
 template <typename T>
 class Stack : private Vector<T> {
 public:
-    Stack();
+    Stack() = default;
     virtual ~Stack() = default;
 
     using Vector<T>::size;
