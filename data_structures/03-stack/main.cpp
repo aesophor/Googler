@@ -13,5 +13,8 @@ int main() {
     stack.push_back(3);
     cout << stack.ToString() << endl;
 
-    //((Vector<int>) stack)->push_front(1);
+    // Stack<T>::push_front() should not be available!!!!
+    //((Vector<int>) stack).push_front(9); // cannot cast to private base class
+    //((Vector<int>&) stack).push_front(1); // dafuq ... ?
+    //cout << stack.ToString() << endl;
 }

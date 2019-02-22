@@ -20,5 +20,7 @@ int main() {
     vec.push_back(3);
     vec.push_back(5);
     vec.push_back(5);
+    vec.push_front(1);
+    vec.push_back(0);
     cout << vec.ToString() << endl;
 }

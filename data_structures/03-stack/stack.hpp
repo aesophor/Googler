@@ -10,12 +10,13 @@ public:
     Stack();
     virtual ~Stack() = default;
 
-    T top() const;
     using Vector<T>::size;
     using Vector<T>::empty;
     using Vector<T>::push_back;
+    using Vector<T>::push_front;
     using Vector<T>::pop_back;
 
+    virtual T top() const;
     virtual std::string ToString() const override;
 };
 
