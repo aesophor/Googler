@@ -1,7 +1,7 @@
 #ifndef QUEUE_HPP_
 #define QUEUE_HPP_
 
-#include "../doubly_linked_list/linked_list.cpp"
+#include "linked_list.cpp"
 #include <string>
 
 template <typename T>

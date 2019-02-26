@@ -1,7 +1,7 @@
 #ifndef STACK_HPP_
 #define STACK_HPP_
 
-#include "../vector/vector.cpp"
+#include "vector.cpp"
 #include <string>
 
 template <typename T>
