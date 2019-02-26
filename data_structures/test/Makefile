@@ -1,6 +1,6 @@
 CXX=g++
 CXXFLAGS=-g -std=c++14 -I.. -flto -Os -Wall
-SRC=$(wildcard *.cpp)
+SRC=$(wildcard ../*.cpp)
 TEST=doubly_linked_list_test \
      vector_test \
      stack_test \
@@ -9,11 +9,8 @@ TEST=doubly_linked_list_test \
 all:
 	make $(TEST)
 
-test: %.cpp
-	$(CXX) -o $(notdir $@)test $< $(CXXFLAGS)
-
-run:
-	./$(BIN)
+%: %.cpp
+	$(CXX) -o $(notdir $@) $< $(CXXFLAGS)
 
 clean:
-	rm $(BIN)
+	rm *_test

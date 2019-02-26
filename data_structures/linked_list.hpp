@@ -29,7 +29,7 @@ public:
     void reverse();
     std::string ToString() const;
 
-private:
+protected:
     struct Node {
         Node(T value) : prev(), next(), data(value) {}
         ~Node() {}

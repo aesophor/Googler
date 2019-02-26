@@ -15,6 +15,6 @@ int main() {
 
     // Stack<T>::push_front() should not be available!!!!
     //((Vector<int>) stack).push_front(9); // cannot cast to private base class
-    //((Vector<int>&) stack).push_front(1); // dafuq ... ?
+    ((Vector<int>&) stack).push_front(1); // dafuq ... ?
     //cout << stack.ToString() << endl;
 }

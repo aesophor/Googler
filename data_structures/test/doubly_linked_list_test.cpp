@@ -1,5 +1,6 @@
 #include "linked_list.cpp"
 #include <iostream>
+#include <cassert>
 
 using std::cout;
 using std::endl;
@@ -12,5 +13,5 @@ int main() {
     list.push_back(7);
     list.push_back(8);
     list.reverse();
-    cout << list.ToString() << endl;
+    assert(list.ToString() == "8 7 6 0 3 ");
 }

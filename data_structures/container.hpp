@@ -3,7 +3,10 @@
 
 template <typename T>
 class Container {
-public:
+protected:
+    Container() : size_(0) {}
+    virtual ~Container() = default;
+
     virtual int size() const = 0;
     virtual bool empty() const = 0;
     virtual T at(int index) const = 0;
@@ -17,11 +20,7 @@ public:
     virtual void erase(int index) = 0;
     virtual void remove(T value) = 0;
     virtual int find(T value) = 0;
-
-protected:
-    Container() : size_(0) {}
-    virtual ~Container() = default;
-
+    
     int size_;
 };
 
