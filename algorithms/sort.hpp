@@ -4,7 +4,9 @@
 #include "data_set.hpp"
 
 namespace sort {
-    void BubbleSort(DataSet& data_set);
+    DataSet& BubbleSort(DataSet& data_set);
+    DataSet& InsertionSort(DataSet& data_set);
+    DataSet& SelectionSort(DataSet& data_set);
 } // namespace sort
 
 #endif

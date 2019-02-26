@@ -5,15 +5,20 @@ DataSet::DataSet(int capacity, int min, int max) : size(capacity) {
     data = new int[capacity];
 
     srand(time(NULL));
-    for (int i = 0; i < capacity; i++) {
-        data[i] = RandInt(min, max);
-    }
+    Randomize(min, max);
 }
 
 DataSet::~DataSet() {
     delete data;
 }
 
+
+DataSet& DataSet::Randomize(int min, int max) {
+    for (int i = 0; i < size; i++) {
+        data[i] = RandInt(min, max);
+    }
+    return *this;
+}
 
 int DataSet::RandInt(int min, int max) {
     return min + (rand() % (max - min + 1));
