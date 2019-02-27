@@ -17,5 +17,9 @@ int main() {
 
     cout << "Selection Sort:" << endl
         << ds.Randomize() << endl
-        << sort::SelectionSort(ds) << endl;
+        << sort::SelectionSort(ds) << endl << endl;
+
+    cout << "Merge Sort:" << endl
+        << ds.Randomize() << endl
+        << sort::MergeSort(ds) << endl;
 }
