@@ -130,14 +130,12 @@ namespace {
                 if (ds[j] <= ds[pivot]) {
                     i++;
                     DataSet::Swap(ds[i], ds[j]);
-                    std::cout << ds << std::endl;
                 }
             }
 
             // Swap ds[i+1] with pivot
             DataSet::Swap(ds[i+1], ds[pivot]);
             pivot = i + 1;
-            std::cout << ds << std::endl;
 
             QuickSort(ds, left, pivot - 1);
             QuickSort(ds, pivot + 1, right);
