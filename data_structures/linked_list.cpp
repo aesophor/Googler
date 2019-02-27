@@ -35,7 +35,6 @@ void LinkedList<T>::push_front(T value) {
     Node* new_node = new Node(value);
 
     if (!head_) {
-        head_ = new_node;
         tail_ = new_node;
     } else {
         new_node->next = head_;
@@ -52,7 +51,6 @@ void LinkedList<T>::push_back(T value) {
 
     if (!tail_) {
         head_ = new_node;
-        tail_ = new_node;
     } else {
         new_node->prev = tail_;
         tail_->next = new_node;

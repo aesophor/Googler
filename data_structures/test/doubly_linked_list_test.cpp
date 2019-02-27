@@ -12,6 +12,7 @@ int main() {
     list.push_back(6);
     list.push_back(7);
     list.push_back(8);
+    list.erase(list.find(7));
     list.reverse();
-    assert(list.ToString() == "8 7 6 0 3 ");
+    assert(list.ToString() == "8 6 0 3 ");
 }
