@@ -116,3 +116,37 @@ DataSet& sort::MergeSort(DataSet& ds) {
     ::MergeSort(ds, 0, ds.size - 1);
     return ds;
 }
+
+
+namespace {
+
+    void QuickSort(DataSet& ds, int left, int right) {
+        if (left < right) {
+            // We will select the last element as the pivot.
+            int i = left - 1; // index of smaller element
+            int pivot = right;
+
+            for (int j = left; j < right; j++) {
+                if (ds[j] <= ds[pivot]) {
+                    i++;
+                    DataSet::Swap(ds[i], ds[j]);
+                    std::cout << ds << std::endl;
+                }
+            }
+
+            // Swap ds[i+1] with pivot
+            DataSet::Swap(ds[i+1], ds[pivot]);
+            pivot = i + 1;
+            std::cout << ds << std::endl;
+
+            QuickSort(ds, left, pivot - 1);
+            QuickSort(ds, pivot + 1, right);
+        }
+    }
+
+} // namespace
+
+DataSet& sort::QuickSort(DataSet& ds) {
+    ::QuickSort(ds, 0, ds.size - 1);
+    return ds;
+}

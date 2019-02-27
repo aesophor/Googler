@@ -21,5 +21,9 @@ int main() {
 
     cout << "Merge Sort:" << endl
         << ds.Randomize() << endl
-        << sort::MergeSort(ds) << endl;
+        << sort::MergeSort(ds) << endl << endl;
+
+    cout << "Quick Sort:" << endl
+        << ds.Randomize() << endl
+        << sort::QuickSort(ds) << endl << endl;
 }
