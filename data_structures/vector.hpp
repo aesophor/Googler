@@ -7,7 +7,7 @@
 #define DEFAULT_SIZE 4
 
 template <typename T>
-class Vector : public Container<T> {
+class Vector : virtual public Container<T> {
 public:
     Vector(int initial_capacity=DEFAULT_SIZE);
     virtual ~Vector() = default;

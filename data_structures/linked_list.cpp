@@ -187,8 +187,10 @@ void LinkedList<T>::reverse() {
 template <typename T>
 std::string LinkedList<T>::ToString() const {
     std::string s;
-    for (Node* ptr = head_; ptr; ptr = ptr->next) {
+    Node* ptr = head_;
+    for (int i = 0; i < size(); i++) {
         s += std::to_string(ptr->data) + " ";
+        ptr = ptr->next;
     }
     return s;
 }

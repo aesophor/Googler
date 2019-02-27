@@ -4,7 +4,8 @@ SRC=$(wildcard ../*.cpp)
 TEST=doubly_linked_list_test \
      vector_test \
      stack_test \
-     queue_test
+     queue_test \
+     circular_buffer_test
 
 all:
 	make $(TEST)

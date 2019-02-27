@@ -5,7 +5,7 @@
 #include <string>
 
 template <typename T>
-class Queue : private LinkedList<T> {
+class Queue : private LinkedList<T>, virtual public Container<T> {
 public:
     Queue() = default;
     virtual ~Queue() = default;

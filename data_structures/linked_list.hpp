@@ -5,7 +5,7 @@
 #include <string>
 
 template <typename T>
-class LinkedList : public Container<T> {
+class LinkedList : virtual public Container<T> {
 public:
     LinkedList();
     virtual ~LinkedList() = default;

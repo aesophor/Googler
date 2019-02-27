@@ -5,7 +5,7 @@
 #include <string>
 
 template <typename T>
-class Stack : private Vector<T> {
+class Stack : private Vector<T>, virtual public Container<T> {
 public:
     Stack() = default;
     virtual ~Stack() = default;
