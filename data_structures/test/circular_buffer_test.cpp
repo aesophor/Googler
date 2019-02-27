@@ -11,9 +11,9 @@ int main() {
     c.enqueue(3);
     c.enqueue(4);
     c.enqueue(5);
-    
-    cout << c.ToString() << endl;
-
     c.enqueue(6);
+    c.enqueue(7);
+    c.dequeue();
+    
     cout << c.ToString() << endl;
 }

@@ -26,13 +26,19 @@ template <typename T>
 void CircularBuffer<T>::enqueue(T value) {
     // Write the value to where the tail_ is, and increment tail_.
     this->tail_->data = value;
+    if (full()) {
+        this->head_ = this->head_->next;
+    }
     this->tail_ = this->tail_->next;
+    this->tail_->data = 0;
 }
 
 template <typename T>
 T CircularBuffer<T>::dequeue() {
+    T value = this->head_->data;
+    this->head_->data = 0;
     this->head_ = this->head_->next;
-    return this->head_->prev->data;
+    return value;
 }
 
 template <typename T>
