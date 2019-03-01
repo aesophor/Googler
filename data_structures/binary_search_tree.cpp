@@ -37,7 +37,32 @@ void BinarySearchTree::Add(int value) {
 }
 
 void BinarySearchTree::Remove(int value) {
+    Node* ptr = root_;
+    while (ptr) {
+        if (value < ptr->value) {
+            ptr = ptr->left_child;
+        } else if (value > ptr->value) {
+            ptr = ptr->right_child;
+        } else { // value == ptr->value
+            if (!ptr->left_child && !ptr->right_child) {
+                if (ptr->parent) {
+                    if (ptr->parent->left_child == ptr) {
+                        ptr->parent->left_child = nullptr;
+                    } else if (ptr->parent->right_child == ptr) {
+                        ptr->parent->right_child = nullptr;
+                    }
+                } else { // no parent -> root node
+                    root_ = nullptr;
+                }
+            } else if (ptr->left_child && !ptr->right_child) {
+                if (ptr->left_child)
+            } else if (!ptr->left_child && ptr->right_child) {
 
+            } else if (ptr->left_child && ptr->right_child) {
+
+            }
+        }
+    }
 }
 
 
