@@ -9,7 +9,7 @@ public:
     }
 };
 
-class B : public A { 
+class B : private A { 
 private:
     void method() {
         cout << "calling B method" << endl;
