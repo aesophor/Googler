@@ -10,5 +10,6 @@ file_count=`echo $time_complexity_lines | wc -l`
 write_to="README.md"
 
 echo "## LeetCode Report" > $write_to
+echo "Total: " $file_count >> $write_to
 echo "* Avg Runtime is" $((time_complexity_sum / file_count))% "faster than other submissions" >> $write_to
 echo "* Avg Memory is" $((space_complexity_sum / file_count))% "less than other submissions" >> $write_to
