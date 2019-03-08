@@ -1,5 +1,5 @@
 // Runtime: 12 ms, faster than 100.00% of C++ online submissions for Permutations.
-// Memory Usage: 9.3 MB, less than 84.84% of C++ online submissions for Permutations.
+// Memory Usage: 9.2 MB, less than 91.50% of C++ online submissions for Permutations.
 
 class Solution {
 public:
