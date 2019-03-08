@@ -1,5 +1,5 @@
 // Runtime: 4 ms, faster than 100.00% of C++ online submissions for Swap Nodes in Pairs.
-// Memory Usage: 8.9 MB, less than 66.92% of C++ online submissions for Swap Nodes in Pairs.
+// Memory Usage: 8.8 MB, less than 86.92% of C++ online submissions for Swap Nodes in Pairs.
 
 /**
  * Definition for singly-linked list.
@@ -19,11 +19,7 @@ public:
         pair<ListNode*, ListNode*> current_pair = { head, head->next }; // in original order
         ListNode* ret = (current_pair.second) ? current_pair.second : current_pair.first;
         
-        while (current_pair.first) {
-            if (!current_pair.second) {
-                break;
-            }
-            
+        while (current_pair.first && current_pair.second) {
             // Cache the next pair if it exists.
             pair<ListNode*, ListNode*> next_pair = { nullptr, nullptr };
             
