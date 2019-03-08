@@ -7,6 +7,8 @@ time_complexity_sum=`echo $time_complexity_lines | awk '{s+=$1} END {print s}'`
 space_complexity_sum=`echo $space_complexity_lines | awk '{s+=$1} END {print s}'`
 file_count=`echo $time_complexity_lines | wc -l`
 
-echo "LeetCode Report"
-echo "Runtime is" $((time_complexity_sum / file_count))% "faster than other submissions"
-echo "Memory is" $((space_complexity_sum / file_count))% "less than other submissions"
+write_to="README.md"
+
+echo "## LeetCode Report" > $write_to
+echo "* Runtime is" $((time_complexity_sum / file_count))% "faster than other submissions" >> $write_to
+echo "* Memory is" $((space_complexity_sum / file_count))% "less than other submissions" >> $write_to
