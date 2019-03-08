@@ -8,7 +8,7 @@ public:
         int win_left = 0;
         int win_right = 0;
         int max_len = 0;
-        
+
         while (win_right < s.size()) {
             if (existing_chars.find(s.at(win_right)) == existing_chars.end()) {
                 // If this char has not appeared before, add it to the map.
@@ -20,11 +20,8 @@ public:
                     existing_chars[s.at(win_right)] = win_right; // store its index
                 } else {
                     // Calculate current unrepeated substring length
-                    int current_len = win_right - win_left;
-                    if (current_len > max_len) {
-                        max_len = current_len;
-                    }
-                    
+                    max_len = max(max_len, win_right - win_left);
+
                     // Set win_left to the next index where it previously appeared
                     win_left = existing_chars.at(s.at(win_right)) + 1;
                     existing_chars[s.at(win_right)] = win_right;
@@ -32,13 +29,9 @@ public:
             }
             win_right++;
         }
-        
+
         // Calculate the size of last window
-        int current_len = win_right - win_left;
-        if (current_len > max_len) {
-            max_len = current_len;
-        }
-        
+        max_len = max(max_len, win_right - win_left);
         return max_len;
     }
 };
