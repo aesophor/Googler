@@ -1,8 +1,8 @@
-#ifndef CIRCULAR_BUFFER_HPP_
-#define CIRCULAR_BUFFER_HPP_
+#ifndef CIRCULAR_BUFFER_H_
+#define CIRCULAR_BUFFER_H_
 
-#include "container.hpp"
-#include "linked_list.cpp"
+#include "container.h"
+#include "linked_list.cc"
 #include <string>
 
 template <typename T>

@@ -1,5 +1,5 @@
-#include "container.hpp"
-#include "stack.cpp"
+#include "container.h"
+#include "stack.cc"
 #include <iostream>
 
 using std::cout;

@@ -1,4 +1,4 @@
-#include "linked_list.hpp"
+#include "linked_list.h"
 #include <stdexcept>
 
 template <typename T>

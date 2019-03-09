@@ -1,7 +1,7 @@
-#ifndef VECTOR_HPP_
-#define VECTOR_HPP_
+#ifndef VECTOR_H_
+#define VECTOR_H_
 
-#include "container.hpp"
+#include "container.h"
 #include <string>
 
 #define DEFAULT_SIZE 4

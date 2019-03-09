@@ -1,5 +1,5 @@
-#ifndef CONTAINER_HPP_
-#define CONTAINER_HPP_
+#ifndef CONTAINER_H_
+#define CONTAINER_H_
 
 template <typename T>
 class Container {

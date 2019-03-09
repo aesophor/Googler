@@ -1,4 +1,4 @@
-#include "queue.cpp"
+#include "queue.cc"
 #include <iostream>
 
 using std::cout;

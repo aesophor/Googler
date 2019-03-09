@@ -1,4 +1,4 @@
-#include "stack.hpp"
+#include "stack.h"
 #include <stdexcept>
 
 template <typename T>

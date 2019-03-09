@@ -1,4 +1,4 @@
-#include "linked_list.cpp"
+#include "linked_list.cc"
 #include <iostream>
 #include <cassert>
 

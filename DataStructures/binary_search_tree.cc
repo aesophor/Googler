@@ -1,4 +1,4 @@
-#include "binary_search_tree.hpp"
+#include "binary_search_tree.h"
 
 using std::cout;
 using std::endl;

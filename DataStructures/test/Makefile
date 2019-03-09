@@ -1,6 +1,6 @@
 CXX=g++
 CXXFLAGS=-g -std=c++14 -I.. -flto -Os -Wall
-SRC=$(wildcard ../*.cpp)
+SRC=$(wildcard ../*.cc)
 TEST=doubly_linked_list_test \
      vector_test \
      stack_test \

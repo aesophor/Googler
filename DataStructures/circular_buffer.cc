@@ -1,4 +1,4 @@
-#include "circular_buffer.hpp"
+#include "circular_buffer.h"
 
 template <typename T>
 CircularBuffer<T>::CircularBuffer(int size) : LinkedList<T>() {

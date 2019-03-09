@@ -1,4 +1,4 @@
-#include "queue.hpp"
+#include "queue.h"
 
 template <typename T>
 void Queue<T>::enqueue(T value) {

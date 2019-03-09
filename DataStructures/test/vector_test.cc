@@ -1,4 +1,4 @@
-#include "vector.cpp"
+#include "vector.cc"
 #include <iostream>
 
 using std::cout;
