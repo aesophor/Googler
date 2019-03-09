@@ -5,7 +5,7 @@ import logging
 import ycm_core
 import re
 
-project_dir = "/home/aesophor/Code/coding-interview-university/algorithms/"
+project_dir = "/home/aesophor/Code/coding-interview-university/Algorithms/"
 
 C_BASE_FLAGS = [
         '-m32',
