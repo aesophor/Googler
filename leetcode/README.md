@@ -3,6 +3,9 @@ Total:  27
 * Avg Runtime is 96.30407407407408% faster than other submissions
 * Avg Memory is 53.515185185185189% less than other submissions
 
+
+
+
 ## Writeups
 ### 1. Two Sum
 給定一個array和target，從中找兩個元素a,b s.t. a+b=target，找到回傳a和b的index

@@ -14,5 +14,5 @@ echo "## LeetCode Report" > $write_to
 echo "Total: " $file_count >> $write_to
 echo "* Avg Runtime is" $((time_complexity_sum / file_count))% "faster than other submissions" >> $write_to
 echo "* Avg Memory is" $((space_complexity_sum / file_count))% "less than other submissions" >> $write_to
-echo -e "\n\n"
+echo -e "\n\n" >> $write_to
 cat $writeup >> $write_to
