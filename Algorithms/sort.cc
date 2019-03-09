@@ -1,4 +1,4 @@
-#include "sort.hpp"
+#include "sort.h"
 
 DataSet& sort::BubbleSort(DataSet& ds) {
     bool sorted = false;

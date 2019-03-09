@@ -1,5 +1,5 @@
-#include "data_set.hpp"
-#include "sort.hpp"
+#include "data_set.h"
+#include "sort.h"
 #include <iostream>
 
 using namespace std;

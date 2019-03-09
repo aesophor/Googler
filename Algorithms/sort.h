@@ -1,7 +1,7 @@
-#ifndef SORT_HPP_
-#define SORT_HPP_
+#ifndef SORT_H_
+#define SORT_H_
 
-#include "data_set.hpp"
+#include "data_set.h"
 
 namespace sort {
     DataSet& BubbleSort(DataSet& ds);

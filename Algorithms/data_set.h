@@ -1,5 +1,5 @@
-#ifndef DATA_SET_HPP_
-#define DATA_SET_HPP_
+#ifndef DATA_SET_H_
+#define DATA_SET_H_
 
 #include <iostream>
 

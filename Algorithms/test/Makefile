@@ -1,13 +1,13 @@
 CXX=g++
 CXXFLAGS=-g -std=c++14 -I.. -flto -Os -Wall
 TEST=sort_test
-TEST_SRC:=$(TEST).cpp
-SRC=$(filter-out $(TEST_SRC), $(wildcard ../*.cpp))
+TEST_SRC:=$(TEST).cc
+SRC=$(filter-out $(TEST_SRC), $(wildcard ../*.cc))
 
 all:
 	make $(TEST)
 
-%: %.cpp
+%: %.cc
 	$(CXX) -o $(notdir $@) $< $(SRC) $(CXXFLAGS)
 
 clean:

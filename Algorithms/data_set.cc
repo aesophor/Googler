@@ -1,5 +1,5 @@
 #include <iostream>
-#include "data_set.hpp"
+#include "data_set.h"
 
 DataSet::DataSet(int capacity, int min, int max) : size(capacity) {
     data = new int[capacity];
