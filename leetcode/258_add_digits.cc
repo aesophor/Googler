@@ -1,5 +1,5 @@
 // Runtime: 4 ms, faster than 100.00% of C++ online submissions for Add Digits.
-// Memory Usage: 8.1 MB, less than 71.90% of C++ online submissions for Add Digits.
+// Memory Usage: 8 MB, less than 95.87% of C++ online submissions for Add Digits.
 
 // With recursion
 class Solution {
