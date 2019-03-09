@@ -9,7 +9,7 @@ int main() {
     unordered_map<string, int> grades;
     grades["John"] = 35;
     grades["Tim"] = 50;
-    grades["Marco"] = 100;
+    grades["Marco"]++;
 
     // Check if key exists in an unordered_map
     if (grades.find("Marco") != grades.end()) {
