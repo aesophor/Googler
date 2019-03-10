@@ -1,6 +1,11 @@
 // Runtime: 16 ms, faster than 100.00% of C++ online submissions for Rotate Array.
 // Memory Usage: 9.5 MB, less than 78.88% of C++ online submissions for Rotate Array.
 
+// [1,2,3,4,5,6,7] and k = 3
+// [5,6,7,1,2,3,4] is the result
+// 先分別轉567,1234, 得[4,3,2,1,7,6,5]
+// 再轉全部, 得[5,6,7,1,2,3,4] 即答案
+
 class Solution {
 public:
     void rotate(vector<int>& nums, int k) {
