@@ -25,16 +25,15 @@ public:
         return true;
     }
     
-    string& toLower(string& s) {
+    inline void toLower(string& s) {
         for (auto& c : s) {
             if (c >= 'A' && c <= 'Z') {
                 c += 'a' - 'A';
             }
         }
-        return s;
     }
     
-    bool isAlphanumeric(char c) {
+    inline bool isAlphanumeric(char c) {
         return (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9');
     }
 };
