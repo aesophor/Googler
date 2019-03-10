@@ -1,3 +1,20 @@
+## 算法整理
+Note: m = sizeof(alphabet)
+
+| No | 題型 | Optimal Solution | 時間 | 空間 |
+| -- | --- | --- | --- | --- |
+| 001 | Two Sum (unsorted) | HashTable; One pass | O(n) | O(n) |
+| 167 | Two Sum (sorted) | 雙指針; One pass | O(n) | O(1) |
+| 015 | Three Sum | ? | ? | ? |
+| 011 | 最大水容器 | 雙指針; One pass | O(n) | O(1) |
+| 042 | 雨水搜集 | ? | ? | ? |
+| 189 | Rotate Array | 轉左轉右再全轉 | 2 * O(n) | O(1) |
+| 003 | 最長沒重復字substr | HashTable; Dynamic Sliding Window; One pass | O(n) | O(min(n, m)) |
+| 020 | 驗證刮號 | PDA 左push右pop; 結束stack必須空; One pass | O(n) | O(n) |
+| 046 | 產生排列 | 1. Aj<Aj+1 2. Aj右邊大於Aj且最小 3. swap 4. 排序Aj+1之後  | sort O(n^2) | O(1) |
+| 204 | Primes | Sieve; 已知01非質數; 質數倍數刪除; 到sqrt(n)可停 | [link](https://stackoverflow.com/questions/48428006/efficiency-of-sieve-of-eratosthenes-algorithm) | O(n) |
+| 705 | toLower | 大小寫offset = 'a'-'A' = 0x20 = 32 | O(n) | O(1) |
+
 
 ## Writeups
 ### 1. Two Sum
