@@ -1,5 +1,4 @@
 ## 算法整理
-Note: m = sizeof(alphabet)
 
 | No | 題型 | Optimal Solution | 時間 | 空間 |
 | -- | --- | --- | --- | --- |
@@ -9,7 +8,7 @@ Note: m = sizeof(alphabet)
 | 011 | 最大水容器 | 雙指針; One pass | O(n) | O(1) |
 | 042 | 雨水搜集 | DP記錄各點左邊最高高度; 回來時min(左最高,右最高)並扣除該位置地板高度，得該處積水高度; Two pass | O(n) | O(n) |
 | 189 | Rotate Array | 轉左轉右再全轉 | O(n) | O(1) |
-| 003 | 最長沒重復字substr | HashTable; Dynamic Sliding Window; One pass | O(n) | O(min(n, m)) |
+| 003 | 最長沒重復字substr | HashTable; Dynamic Sliding Window; One pass | O(n) | O(n) |
 | 020 | 驗證刮號 | PDA 左push右pop; 結束stack必須空; One pass | O(n) | O(n) |
 | 046 | 產生排列 | 1. Aj<Aj+1 2. Aj右邊大於Aj且最小 3. swap 4. 排序Aj+1之後  | sort O(n^2) | O(1) |
 | 204 | Primes | Sieve; 已知01非質數; 質數倍數刪除; 到sqrt(n)可停 | [link](https://stackoverflow.com/questions/48428006/efficiency-of-sieve-of-eratosthenes-algorithm) | O(n) |
