@@ -33,7 +33,9 @@
 這題難度是不是寫錯了...==# 應該是 hard
 
 abcabcbb -> 3 ("abc")
+
 bbbbb -> 1 ("b")
+
 pwwkew -> 3 ("wke")
 
 * Bruteforce Sliding Window: 假設給的字串長度爲n，把1~n的substrings全部列舉出來，逐個檢查是否有重復char，如果沒有就可以更新最大長度。
