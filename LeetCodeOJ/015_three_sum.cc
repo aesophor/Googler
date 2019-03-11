@@ -1,6 +1,66 @@
-// Runtime: 3612 ms, faster than 6.90% of C++ online submissions for 3Sum.
-// Memory Usage: 494.5 MB, less than 5.01% of C++ online submissions for 3Sum.
+// Runtime: 120 ms, faster than 71.28% of C++ online submissions for 3Sum.
+// Memory Usage: 16.4 MB, less than 83.87% of C++ online submissions for 3Sum.
+class Solution {
+public:
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        std::sort(nums.begin(), nums.end());
+        int size = nums.size();
+        int target = 0;
+        vector<vector<int>> result;
+  
+        // Reduce 3sum to multiple 2sum problems
+        for (int i = 0; i < size; i++) {
+            if (i > 0 && nums.at(i) == nums.at(i - 1)) {
+                continue;
+            }
+            
+            int pfront = i + 1;
+            int pback = size - 1;
+            
+            while (pfront < pback) {
+                int sum = nums.at(pfront) + nums.at(pback);
+                int complement = target - nums.at(i);
+                
+                if (sum == complement) {
+                    result.push_back({ nums.at(i), nums.at(pfront), nums.at(pback) });
+                    
+                    // Move pfront and pback to the next different element
+                    while (pfront < pback) {
+                        pfront++;
+                        if (nums.at(pfront - 1) != nums.at(pfront)) {
+                            break;
+                        }
+                    }
+                    while (pfront < pback) {
+                        pback--;
+                        if (nums.at(pback) != nums.at(pback + 1)) {
+                            break;
+                        }
+                    }
+                } else if (sum < complement) {
+                    while (pfront < pback) {
+                        pfront++;
+                        if (nums.at(pfront - 1) != nums.at(pfront)) {
+                            break;
+                        }
+                    }
+                } else { // sum > complement
+                    while (pfront < pback) {
+                        pback--;
+                        if (nums.at(pback) != nums.at(pback + 1)) {
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        
+        return result;
+    }
+};
 
+/*
+bruteforce:
 class Solution {
 public:
     vector<vector<int>> threeSum(vector<int>& nums) {
@@ -58,6 +118,7 @@ public:
         return solution;
     }
 };
+*/
 
 
 // -1 0  = -1 *
