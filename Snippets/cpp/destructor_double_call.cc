@@ -34,7 +34,7 @@ void DisplayTitle(A* a) {
 }
 */
 
-void DisplayTitle(A& a) {
+void DisplayTitle(A a) {
     cout << a << endl;
 }
 
