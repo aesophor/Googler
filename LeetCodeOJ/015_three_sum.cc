@@ -1,5 +1,6 @@
 // Runtime: 120 ms, faster than 71.28% of C++ online submissions for 3Sum.
 // Memory Usage: 16.4 MB, less than 83.87% of C++ online submissions for 3Sum.
+
 class Solution {
 public:
     vector<vector<int>> threeSum(vector<int>& nums) {
@@ -7,54 +8,34 @@ public:
         int size = nums.size();
         int target = 0;
         vector<vector<int>> result;
-  
+
         // Reduce 3sum to multiple 2sum problems
         for (int i = 0; i < size; i++) {
             if (i > 0 && nums.at(i) == nums.at(i - 1)) {
                 continue;
             }
-            
+
             int pfront = i + 1;
             int pback = size - 1;
-            
+
             while (pfront < pback) {
                 int sum = nums.at(pfront) + nums.at(pback);
                 int complement = target - nums.at(i);
-                
+
                 if (sum == complement) {
                     result.push_back({ nums.at(i), nums.at(pfront), nums.at(pback) });
-                    
+
                     // Move pfront and pback to the next different element
-                    while (pfront < pback) {
-                        pfront++;
-                        if (nums.at(pfront - 1) != nums.at(pfront)) {
-                            break;
-                        }
-                    }
-                    while (pfront < pback) {
-                        pback--;
-                        if (nums.at(pback) != nums.at(pback + 1)) {
-                            break;
-                        }
-                    }
+                    do { pfront++; } while (pfront < pback && nums.at(pfront - 1) == nums.at(pfront));
+                    do { pback--; } while (pfront < pback && nums.at(pback) == nums.at(pback + 1));
                 } else if (sum < complement) {
-                    while (pfront < pback) {
-                        pfront++;
-                        if (nums.at(pfront - 1) != nums.at(pfront)) {
-                            break;
-                        }
-                    }
+                    do { pfront++; } while (pfront < pback && nums.at(pfront - 1) == nums.at(pfront));
                 } else { // sum > complement
-                    while (pfront < pback) {
-                        pback--;
-                        if (nums.at(pback) != nums.at(pback + 1)) {
-                            break;
-                        }
-                    }
+                    do { pback--; } while (pfront < pback && nums.at(pback) == nums.at(pback + 1));
                 }
             }
         }
-        
+
         return result;
     }
 };
