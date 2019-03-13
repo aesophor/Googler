@@ -1,5 +1,5 @@
 // Runtime: 36 ms, faster than 87.81% of C++ online submissions for Min Stack.
-// Memory Usage: 17.2 MB, less than 12.10% of C++ online submissions for Min Stack.
+// Memory Usage: 17 MB, less than 48.66% of C++ online submissions for Min Stack.
 
 class MinStack {
 public:
