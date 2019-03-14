@@ -65,7 +65,7 @@ public:
         }
         // cabad
         // ^   ^  c != d
-        return (pleft == center - 1 && pright == center + 1) ? 0 : center - pleft - 1;
+        return center - pleft - 1;
     }
     
     /* Expand from center1 and center2 until expansion is impossible
@@ -79,6 +79,6 @@ public:
             pleft--;
             pright++;
         }
-        return (pleft == center1 - 1 && pright == center2 + 1) ? 0 : center1 - pleft - 1;
+        return center1 - pleft - 1;
     }
 };
