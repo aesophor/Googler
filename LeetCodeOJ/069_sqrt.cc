@@ -10,6 +10,7 @@ public:
         while (l <= r) {
             int mid = l + (r - l) / 2;
             
+            // 2 == 5 / 2  --> for 5, we want to get 2
             if (mid == x / mid) {
                 return mid;
             } else if (mid < x / mid) {
