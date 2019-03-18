@@ -1,15 +1,20 @@
-// Runtime: 224 ms, faster than 8.99% of C++ online submissions for Sum of Square Numbers.
-// Memory Usage: 61.2 MB, less than 8.20% of C++ online submissions for Sum of Square Numbers.
+// Runtime: 4 ms, faster than 100.00% of C++ online submissions for Sum of Square Numbers.
+// Memory Usage: 8.6 MB, less than 96.72% of C++ online submissions for Sum of Square Numbers.
 
 class Solution {
 public:
     bool judgeSquareSum(int c) {
-        unordered_set<int> complement;
+        int l = 0;
+        int r = (int) std::sqrt(c);
         
-        for (int i = 0; i <= std::sqrt(c); i++) {
-            complement.insert(i * i);
-            if (complement.find(c - i * i) != complement.end()) {
+        while (l <= r) {
+            int sum = l * l;
+            if (sum == c - r * r) {
                 return true;
+            } else if (sum < c - r * r) {
+                l++;
+            } else { // sum > c
+                r--;
             }
         }
         return false;
