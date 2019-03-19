@@ -1,0 +1,35 @@
+// Runtime: 24 ms, faster than 99.60% of C++ online submissions for Binary Tree Tilt.
+// Memory Usage: 22.1 MB, less than 68.42% of C++ online submissions for Binary Tree Tilt.
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    int findTilt(TreeNode* root) {
+        postOrder(root);
+        return result_;
+    }
+    
+private:
+    int postOrder(TreeNode* root) {
+        if (!root) {
+            return 0;
+        }
+        
+        int left_subtree_sum = postOrder(root->left);
+        int right_subtree_sum = postOrder(root->right);
+        result_ += std::abs(left_subtree_sum - right_subtree_sum);
+        // Suppose we are returning the sum of entire left subtree
+        
+        return left_subtree_sum + root->val + right_subtree_sum;
+    }
+    
+    int result_ = 0;
+};
