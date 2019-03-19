@@ -23,11 +23,11 @@ private:
             return 0;
         }
         
+        // Look at this, we want to get the sum of entire left subtree, right?
+        // So we have to return root->left's left subtree + root->left + root_left's right subtree
         int left_subtree_sum = postOrder(root->left);
         int right_subtree_sum = postOrder(root->right);
         result_ += std::abs(left_subtree_sum - right_subtree_sum);
-        // Suppose we are returning the sum of entire left subtree
-        
         return left_subtree_sum + root->val + right_subtree_sum;
     }
     
