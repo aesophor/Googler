@@ -28,7 +28,7 @@ public:
         
         ListNode* intersectBegin = nullptr;
         while (headA && headB) {
-            if (headA == headB) {
+            if (headA == headB) { // 所謂 intersection 是碰到一樣的node, 不是內容一樣就算。。。
                 intersectBegin = headA;
                 break;
             }
