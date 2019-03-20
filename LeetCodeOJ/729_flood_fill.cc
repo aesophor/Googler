@@ -1,6 +1,7 @@
 // Runtime: 28 ms, faster than 99.38% of C++ online submissions for Flood Fill.
 // Memory Usage: 11.7 MB, less than 98.44% of C++ online submissions for Flood Fill.
 
+// DFS
 class Solution {
 public:
     vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int new_color) {
@@ -28,4 +29,39 @@ private:
     }
     
     int old_color_ = 0;
+};
+
+
+// DFS
+class Solution {
+public:
+    vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int new_color) {
+        if (image[sr][sc] == new_color) {
+            return image;
+        }
+        
+        // BFS
+        queue<pair<int, int>> q;
+        int old_color = image[sr][sc];
+        q.push(std::make_pair(sr, sc));
+        while (!q.empty()) {
+            auto coord = q.front(); // (x,y)
+            int& r = coord.first;
+            int& c = coord.second;
+            q.pop();
+            
+            if (r < 0 || c < 0 || r >= image.size() || c >= image[r].size() || image[r][c] != old_color) {
+                continue;
+            }
+            
+            // Paint this shit
+            image[r][c] = new_color;
+            q.push(std::make_pair(r, c - 1));
+            q.push(std::make_pair(r, c + 1));
+            q.push(std::make_pair(r - 1, c));
+            q.push(std::make_pair(r + 1, c));
+        }
+        
+        return image;
+    }
 };
