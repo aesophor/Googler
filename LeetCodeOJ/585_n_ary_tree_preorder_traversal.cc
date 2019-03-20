@@ -1,5 +1,5 @@
-// Runtime: 236 ms, faster than 6.27% of C++ online submissions for N-ary Tree Preorder Traversal.
-// Memory Usage: 128.9 MB, less than 5.55% of C++ online submissions for N-ary Tree Preorder Traversal.
+// Runtime: 156 ms, faster than 99.20% of C++ online submissions for N-ary Tree Preorder Traversal.
+// Memory Usage: 33.3 MB, less than 47.22% of C++ online submissions for N-ary Tree Preorder Traversal.
 
 /*
 // Definition for a Node.
@@ -31,5 +31,54 @@ public:
     }
 
 private:
+    vector<int> result_;
+};
+
+
+// Iterative
+/*
+// Definition for a Node.
+class Node {
+public:
+    int val;
+    vector<Node*> children;
+
+    Node() {}
+
+    Node(int _val, vector<Node*> _children) {
+        val = _val;
+        children = _children;
+    }
+};
+*/
+class Solution {
+public:
+    vector<int> preorder(Node* root) {
+        if (!root) {
+            return result_;
+        }
+        
+        stack<Node*> st;
+        st.push(root);
+        Node* node = root;
+        while (!st.empty()) {
+            result_.push_back(node->val);
+            if (!isLeaf(node)) {
+                for (int i = node->children.size() - 1; i >= 0; i--) {
+                    st.push(node->children.at(i));
+                }
+            }
+            node = st.top();
+            st.pop();
+        }
+        
+        return result_;
+    }
+    
+private:
+    inline bool isLeaf(Node* node) {
+        return node->children.empty();
+    }
+    
     vector<int> result_;
 };
