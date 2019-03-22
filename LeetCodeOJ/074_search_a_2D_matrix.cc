@@ -17,12 +17,11 @@ public:
     // Find the index of vector where `target` should be in.
     int left = 0;
     int right = matrix.size() - 1;
-    while (left < right) {
+    while (left <= right) {
       int mid = left + (right - left) / 2;
-      int first_col = matrix.at(mid).front();
-      if (first_col < target) {
+      if (matrix.at(mid).front() < target) {
         left = mid + 1;
-      } else if (first_col > target) {
+      } else if (matrix.at(mid).front() > target) {
         right = mid - 1;
       } else { // equals
         return true;
@@ -30,7 +29,7 @@ public:
     }
     
     // Calibrate binary search result lol
-    if (matrix.at(left).front() > target && left > 0) {
+    if (left == matrix.size() || (matrix.at(left).front() > target && left > 0)) {
       left--;
     }
     
