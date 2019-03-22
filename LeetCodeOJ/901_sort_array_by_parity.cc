@@ -8,15 +8,16 @@ public:
     int right = A.size() - 1;
     
     while (left < right) {
-      int& l = A.at(left);
-      int& r = A.at(right);
-      if (!isEven(l) && isEven(r)) {
-        std::swap(l, r);
+      bool left_is_even = isEven(A.at(left));
+      bool right_is_even = isEven(A.at(right));
+      
+      if (!left_is_even && right_is_even) {
+        std::swap(A.at(left), A.at(right));
         left++;
         right--;
-      } else if (isEven(l) && isEven(r)) {
+      } else if (left_is_even && right_is_even) {
         left++; // 左邊繼續往右找，想辦法把右邊even換到左邊
-      } else if (!isEven(l) && !isEven(r)) {
+      } else if (!left_is_even && !right_is_even) {
         right--; // 右邊繼續往左找，想辦法把左邊odd換到右邊
       } else { // isEven(l) && !isEven(r)
         left++;
