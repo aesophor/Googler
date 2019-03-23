@@ -1,5 +1,5 @@
 // Runtime: 4 ms, faster than 100.00% of C++ online submissions for Invert Binary Tree.
-// Memory Usage: 9.1 MB, less than 77.61% of C++ online submissions for Invert Binary Tree.
+// Memory Usage: 8.9 MB, less than 100.00% of C++ online submissions for Invert Binary Tree.
 
 /**
  * Definition for a binary tree node.
@@ -12,14 +12,13 @@
  */
 class Solution {
 public:
-    TreeNode* invertTree(TreeNode* root) {
-        if (!root) {
-            return root;
-        }
-        
-        invertTree(root->left);
-        invertTree(root->right);
-        std::swap(root->left, root->right);
-        return root;
+  TreeNode* invertTree(TreeNode* root) {
+    if (!root) {
+      return root;
     }
+    std::swap(root->left, root->right);
+    invertTree(root->left);
+    invertTree(root->right);
+    return root;
+  }
 };
