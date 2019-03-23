@@ -1,7 +1,7 @@
 ## LeetCode Report
-Total:  116
-* Avg Runtime is 90.835344827586198% faster than other submissions
-* Avg Memory is 63.803189655172417% less than other submissions
+Total:  117
+* Avg Runtime is 90.76666666666668% faster than other submissions
+* Avg Memory is 64.085299145299146% less than other submissions
 
 
 
