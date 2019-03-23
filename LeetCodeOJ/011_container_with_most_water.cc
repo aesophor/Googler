@@ -3,23 +3,23 @@
 
 class Solution {
 public:
-    int maxArea(vector<int>& height) {
-        int max_area = 0;
-
-        int begin = 0;
-        int end = height.size() - 1;
-
-        while (begin != end) {
-            int area = (end - begin) * min(height.at(begin), height.at(end));
-            max_area = max(max_area, area);
-
-            if (height.at(begin) <= height.at(end)) {
-                begin++;
-            } else {
-                end--;
-            }
-        }
-
-        return max_area;
+  int maxArea(vector<int>& height) {
+    int left = 0;
+    int right = height.size() - 1;
+    int max_area = 0;
+    
+    while (left <= right) {
+      int& left_height = height.at(left);
+      int& right_height = height.at(right);
+      max_area = std::max(max_area, std::min(left_height, right_height) * (right - left));
+      
+      if (left_height <= right_height) {
+        left++;
+      } else {
+        right--;
+      }
     }
+    
+    return max_area;
+  }
 };
