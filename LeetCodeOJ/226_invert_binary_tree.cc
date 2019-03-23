@@ -13,12 +13,17 @@
 class Solution {
 public:
   TreeNode* invertTree(TreeNode* root) {
-    if (!root) {
-      return root;
-    }
-    std::swap(root->left, root->right);
-    invertTree(root->left);
-    invertTree(root->right);
+    swapChildren(root);
     return root;
+  }
+  
+private:
+  void swapChildren(TreeNode* node) {
+    if (!node) {
+      return;
+    }
+    std::swap(node->left, node->right);
+    swapChildren(node->left);
+    swapChildren(node->right);
   }
 };
