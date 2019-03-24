@@ -53,32 +53,25 @@ public:
 */
 class Solution {
 public:
-    vector<int> preorder(Node* root) {
-        if (!root) {
-            return result_;
-        }
-        
-        stack<Node*> st;
-        st.push(root);
-        Node* node = root;
-        while (!st.empty()) {
-            result_.push_back(node->val);
-            if (!isLeaf(node)) {
-                for (int i = node->children.size() - 1; i >= 0; i--) {
-                    st.push(node->children.at(i));
-                }
-            }
-            node = st.top();
-            st.pop();
-        }
-        
-        return result_;
+  vector<int> preorder(Node* root) {
+    if (!root) {
+      return {};
     }
-    
-private:
-    inline bool isLeaf(Node* node) {
-        return node->children.empty();
+
+    vector<int> result;
+    stack<Node*> st;
+    st.push(root);
+
+    while (!st.empty()) {
+      Node* top = st.top();
+      result.push_back(top->val);
+      st.pop();
+
+      for (int i = top->children.size() - 1; i >= 0; i--) {
+        st.push(top->children.at(i));
+      }
     }
-    
-    vector<int> result_;
+
+    return result;
+  }
 };
