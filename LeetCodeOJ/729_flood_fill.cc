@@ -35,33 +35,39 @@ private:
 // DFS
 class Solution {
 public:
-    vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int new_color) {
-        if (image[sr][sc] == new_color) {
-            return image;
-        }
-        
-        // BFS
-        queue<pair<int, int>> q;
-        int old_color = image[sr][sc];
-        q.push(std::make_pair(sr, sc));
-        while (!q.empty()) {
-            auto coord = q.front(); // (x,y)
-            int& r = coord.first;
-            int& c = coord.second;
-            q.pop();
-            
-            if (r < 0 || c < 0 || r >= image.size() || c >= image[r].size() || image[r][c] != old_color) {
-                continue;
-            }
-            
-            // Paint this shit
-            image[r][c] = new_color;
-            q.push(std::make_pair(r, c - 1));
-            q.push(std::make_pair(r, c + 1));
-            q.push(std::make_pair(r - 1, c));
-            q.push(std::make_pair(r + 1, c));
-        }
-        
-        return image;
+  vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int new_color) {
+    if (image.empty() || image[sr][sc] == new_color) {
+      return image;
     }
+    
+    // BFS Flood fill @_@
+    int old_color = image[sr][sc];
+    queue<pair<int, int>> q;
+    q.push({sr, sc});
+    
+    while (!q.empty()) {
+      pair<int, int> coord = q.front();
+      q.pop();
+      
+      int& r = coord.first;
+      int& c = coord.second;
+      
+      image[r][c] = new_color;
+      
+      if (r > 0 && image[r - 1][c] == old_color) {
+        q.push({r - 1, c});
+      }
+      if (c > 0 && image[r][c - 1] == old_color) {
+        q.push({r, c - 1});
+      }
+      if (r < image.size() - 1 && image[r + 1][c] == old_color) {
+        q.push({r + 1, c});
+      }
+      if (c < image[0].size() - 1 && image[r][c + 1] == old_color) {
+        q.push({r, c + 1});
+      }
+    }
+    
+    return image;
+  }
 };
