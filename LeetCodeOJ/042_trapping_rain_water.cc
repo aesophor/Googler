@@ -3,36 +3,36 @@
 
 class Solution {
 public:
-    int trap(vector<int>& height) {
-        if (height.empty()) {
-            return 0;
-        }
-        
-        // DP; Two pass; time: O(n); space: O(n)
-        int left_highest[height.size()];
-        
-        int left_max = 0;
-        for (int i = 0; i < height.size(); i++) {
-            left_highest[i] = left_max;
-            left_max = std::max(left_max, height.at(i));
-        }
-        
-        int area = 0;
-        int right_max = 0;
-        for (int i = height.size() - 1; i >= 0; i--) {
-            // Calculate water area minus the height of the ground
-            int current = height.at(i);
-            if (current < left_highest[i] && current < right_max) {
-                area += std::min(left_highest[i], right_max) - current;
-            }
-            
-            right_max = std::max(right_max, height.at(i));
-        }
-        
-        return area;
+  int trap(vector<int>& height) {
+    if (height.empty()) {
+      return 0;
     }
+    
+    int area = 0;
+    
+    vector<int> left_highest(height.size());
+    left_highest.at(0);
+    
+    for (int i = 1; i < height.size(); i++) {
+      left_highest.at(i) = std::max(left_highest.at(i - 1), height.at(i - 1));
+    }
+    
+    int right_highest = 0;
+    for (int i = height.size() - 1; i >= 0; i--) {
+      int& current_height = height.at(i);
+      if (current_height < left_highest.at(i) && current_height < right_highest) {
+        area += std::min(left_highest.at(i), right_highest) - current_height;
+      }
+      right_highest = std::max(right_highest, current_height);
+    }
+    
+    return area;
+  }
 };
 
+// [0,1,0,2,1,0,1,3,2,1,2,1]
+// [0,0,1,1,2,2,2,3,3,3,3,3] l
+// []
 
 /*
 bruteforce:
