@@ -2,7 +2,7 @@
 
 class A {
 public:
-  A() : a_() {}
+  A() : a_() {} // you can init nullptr like this
   A* a_;
 };
 
