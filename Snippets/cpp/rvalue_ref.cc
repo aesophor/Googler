@@ -7,6 +7,7 @@ public:
 };
 
 int main() {
-  //A& a = A(); // non-const lvalue ref to 'A' cannot bind to temporary 'A'
-  A&& aa = A(); // rvalue ref. hehe boi
+  //A& a = A();     // non-const lvalue ref to 'A' cannot bind to temporary 'A'
+  const A& a = A(); // ok
+  A&& aa = A();     // rvalue ref. hehe boi
 }
