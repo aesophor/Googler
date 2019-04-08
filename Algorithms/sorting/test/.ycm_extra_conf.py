@@ -5,7 +5,7 @@ import logging
 import ycm_core
 import re
 
-project_dir = "/home/aesophor/Code/future-googler/Algorithms/"
+project_dir = "/home/aesophor/Code/future-googler/Algorithms/sorting/"
 
 C_BASE_FLAGS = [
         '-m32',
