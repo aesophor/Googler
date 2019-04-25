@@ -1,9 +1,7 @@
 <div align="center">
-<h3>Google Interview Univeristy</h3>
+<h3>Google Interview Univeristy (<a href="https://github.com/jwasham/coding-interview-university">Original repo</a>)</h3>
 <img src="https://sdtimes.com/wp-content/uploads/2016/10/1028.sdt-github.png">
 </div>
-
-[Original repo](https://github.com/jwasham/coding-interview-university)
 
 ## Table of Contents
 
