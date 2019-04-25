@@ -13,8 +13,15 @@ int main() {
   
   list.push_back(5);
   list.push_front(3);
+  list.insert(2, 2);
+  cout << list.to_string() << endl;
+
+  cout << list.at(0) << endl;
+  cout << list.at(1) << endl;
+
   list.pop_front();
   list.pop_front();
+
 
   cout << list.to_string() << endl;
 }

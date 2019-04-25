@@ -85,6 +85,45 @@ void DoublyLinkedList<T>::pop_front() {
 
 
 template <typename T>
+void DoublyLinkedList<T>::insert(size_t index, T val) {
+  Node* new_node = new Node(val);
+
+  if (index < 0 || index > size_) {
+    throw std::out_of_range("Doubly Linked List out of range.");
+  } if (index == 0) {
+    push_front(val);
+  } else if (index == size_) {
+    push_back(val);
+  } else {
+    Node* ptr = head_;
+    for (int i = 0; i < index - 1; i++) {
+      ptr = ptr->next;
+    }
+    ptr->next->prev = new_node;
+    new_node->next = ptr->next;
+    new_node->prev = ptr;
+    ptr->next = new_node;
+    size_++;
+  }
+}
+
+template <typename T>
+void DoublyLinkedList<T>::erase(size_t index) {
+
+}
+
+template <typename T>
+void DoublyLinkedList<T>::remove(T val) {
+
+}
+
+template <typename T>
+size_t DoublyLinkedList<T>::find(T val) {
+
+}
+
+
+template <typename T>
 size_t DoublyLinkedList<T>::size() const {
   return size_;
 }
@@ -99,6 +138,10 @@ T DoublyLinkedList<T>::at(size_t index) const {
   Node* ptr = head_;
   for (size_t i = 0; i < index && ptr; i++) {
     ptr = ptr->next;
+  }
+
+  if (!ptr) {
+    throw std::out_of_range("Doubly Linked List out of range.");
   }
   return ptr->val;
 }
