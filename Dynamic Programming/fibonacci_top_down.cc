@@ -9,12 +9,7 @@ int fibonacci(unordered_map<int, int>& memo, int i) {
     return memo[i];
   }
 
-  int result = 0;
-  if (i <= 2) {
-    result = 1;
-  } else {
-    result = fibonacci(memo, i - 2) + fibonacci(memo, i - 1);
-  }
+  int result = (i <= 2) ? 1 : (fibonacci(memo, i-2) + fibonacci(memo, i-1));
   memo[i] = result;
   return result;
 }
