@@ -193,7 +193,7 @@ T DoublyLinkedList<T>::at(size_t index) const {
   }
 
   if (!ptr) {
-    throw std::out_of_range("Doubly Linked List out of range.");
+    throw std::out_of_range(kOutOfRangeMsg_);
   }
   return ptr->val;
 }
