@@ -9,5 +9,5 @@ all:
 clean:
 	rm $(BIN)
 
-test:
+run:
 	./$(BIN)
