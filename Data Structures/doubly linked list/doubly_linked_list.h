@@ -1,7 +1,6 @@
 #ifndef DOUBLY_LINKED_LIST_H_
 #define DOUBLY_LINKED_LIST_H_
 
-#include <iostream>
 #include <string>
 
 template <typename T>
