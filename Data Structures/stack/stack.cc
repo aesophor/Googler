@@ -37,7 +37,9 @@ void Stack<T>::pop() {
     throw std::out_of_range(kOutOfRangeMsg_);
   }
   
+  Node* old_top = top_;
   top_ = top_->next;
+  delete old_top;
   size_--;
 }
 
