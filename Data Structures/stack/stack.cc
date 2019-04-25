@@ -67,6 +67,9 @@ bool Stack<T>::empty() const {
 
 template <typename T>
 T Stack<T>::top() const {
+  if (size_ == 0) {
+    throw std::out_of_range(kOutOfRangeMsg_);
+  }
   return top_->val;
 }
 
