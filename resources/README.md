@@ -3,6 +3,8 @@
 <img src="https://sdtimes.com/wp-content/uploads/2016/10/1028.sdt-github.png">
 </div>
 
+[Original repo](https://github.com/jwasham/coding-interview-university)
+
 ## Table of Contents
 
 - [Don't feel you aren't smart enough](#dont-feel-you-arent-smart-enough)
