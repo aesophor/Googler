@@ -1,0 +1,41 @@
+#ifndef DOUBLY_LINKED_LIST_H_
+#define DOUBLY_LINKED_LIST_H_
+
+#include <iostream>
+#include <string>
+
+template <typename T>
+class DoublyLinkedList {
+ public:
+  DoublyLinkedList();
+  virtual ~DoublyLinkedList();
+
+  void push_back(T val);
+  void push_front(T val);
+  void pop_back();
+  void pop_front();
+
+  void insert(size_t index, T val);
+  void erase(size_t index);
+  void remove(T val);
+  size_t find(T val);
+
+  size_t size() const;
+  bool empty() const;
+  T at(size_t index) const;
+  std::string to_string() const;
+
+ private:
+  struct Node {
+    Node(T val);
+    T val;
+    Node* prev;
+    Node* next;
+  };
+
+  Node* head_;
+  Node* tail_;
+  size_t size_;
+};
+
+#endif // DOUBLY_LINKED_LIST_H_
