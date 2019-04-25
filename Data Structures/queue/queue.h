@@ -31,4 +31,4 @@ class Queue {
   size_t size_;
 };
 
-#endif
+#endif // QUEUE_H_
