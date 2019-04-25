@@ -19,9 +19,7 @@ int main() {
   cout << list.at(0) << endl;
   cout << list.at(1) << endl;
 
-  list.pop_front();
-  list.pop_front();
-
+  list.erase(2);
 
   cout << list.to_string() << endl;
 }

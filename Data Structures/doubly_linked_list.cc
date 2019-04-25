@@ -3,6 +3,10 @@
 #include <stdexcept>
 
 template <typename T>
+const std::string DoublyLinkedList<T>::kOutOfRangeMsg_ = "Doubly Linked List out of range";
+
+
+template <typename T>
 DoublyLinkedList<T>::Node::Node(T val) : val(val), prev(), next() {}
 
 template <typename T>
@@ -10,12 +14,7 @@ DoublyLinkedList<T>::DoublyLinkedList() : head_(), tail_(), size_() {}
 
 template <typename T>
 DoublyLinkedList<T>::~DoublyLinkedList() {
-  Node* ptr = head_;
-  while (ptr) {
-    Node* next = ptr->next;
-    delete ptr;
-    ptr = next;
-  }
+  clear();
 }
 
 
@@ -50,7 +49,7 @@ void DoublyLinkedList<T>::push_front(T val) {
 template <typename T>
 void DoublyLinkedList<T>::pop_back() {
   if (size_ == 0) {
-    throw std::out_of_range("Doubly Linked List out of range.");
+    throw std::out_of_range(kOutOfRangeMsg_);
   }
 
   Node* old_tail = tail_;
@@ -68,7 +67,7 @@ void DoublyLinkedList<T>::pop_back() {
 template <typename T>
 void DoublyLinkedList<T>::pop_front() {
   if (size_ == 0) {
-    throw std::out_of_range("Doubly Linked List out of range.");
+    throw std::out_of_range(kOutOfRangeMsg_);
   }
 
   Node* old_head = head_;
@@ -89,14 +88,14 @@ void DoublyLinkedList<T>::insert(size_t index, T val) {
   Node* new_node = new Node(val);
 
   if (index < 0 || index > size_) {
-    throw std::out_of_range("Doubly Linked List out of range.");
-  } if (index == 0) {
+    throw std::out_of_range(kOutOfRangeMsg_);
+  } else if (index == 0) {
     push_front(val);
   } else if (index == size_) {
     push_back(val);
   } else {
     Node* ptr = head_;
-    for (int i = 0; i < index - 1; i++) {
+    for (size_t i = 0; i < index - 1; i++) {
       ptr = ptr->next;
     }
     ptr->next->prev = new_node;
@@ -109,17 +108,60 @@ void DoublyLinkedList<T>::insert(size_t index, T val) {
 
 template <typename T>
 void DoublyLinkedList<T>::erase(size_t index) {
-
+  if (index < 0 || index >= size_) {
+    throw std::out_of_range(kOutOfRangeMsg_);
+  } else if (index == 0) {
+    pop_front();
+  } else if (index == size_ - 1) {
+    pop_back();
+  } else {
+    Node* ptr = head_;
+    for (size_t i = 0; i < index; i++) {
+      ptr = ptr->next;
+    }
+    ptr->prev->next = ptr->next;
+    ptr->next->prev = ptr->prev;
+    delete ptr;
+    size_--;
+  }
 }
 
 template <typename T>
 void DoublyLinkedList<T>::remove(T val) {
-
+  Node* ptr = head_;
+  while (ptr) {
+    if (ptr->val == val) {
+      ptr->prev->next = ptr->next;
+      ptr->next->prev = ptr->prev;
+      delete ptr;
+      size_--;
+      return;
+    }
+    ptr = ptr->next;
+  }
 }
 
 template <typename T>
 size_t DoublyLinkedList<T>::find(T val) {
+  Node* ptr = head_;
+  for (size_t i = 0; i < size_; i++) {
+    if (ptr->val == val) {
+      return i;
+    }
+    ptr = ptr->next;
+  }
+  return -1;
+}
 
+template <typename T>
+void DoublyLinkedList<T>::clear() {
+  Node* ptr = head_;
+  while (ptr) {
+    Node* next = ptr->next;
+    delete ptr;
+    ptr = next;
+  }
+  size_ = 0;
 }
 
 
@@ -131,6 +173,16 @@ size_t DoublyLinkedList<T>::size() const {
 template <typename T>
 bool DoublyLinkedList<T>::empty() const {
   return size_ == 0;
+}
+
+template <typename T>
+T DoublyLinkedList<T>::front() const {
+  return head_->val;
+}
+
+template <typename T>
+T DoublyLinkedList<T>::back() const {
+  return tail_->val;
 }
 
 template <typename T>

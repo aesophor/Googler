@@ -19,9 +19,12 @@ class DoublyLinkedList {
   void erase(size_t index);
   void remove(T val);
   size_t find(T val);
+  void clear();
 
   size_t size() const;
   bool empty() const;
+  T front() const;
+  T back() const;
   T at(size_t index) const;
   std::string to_string() const;
 
@@ -33,6 +36,7 @@ class DoublyLinkedList {
     Node* next;
   };
 
+  static const std::string kOutOfRangeMsg_;
   Node* head_;
   Node* tail_;
   size_t size_;
