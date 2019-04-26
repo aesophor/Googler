@@ -9,7 +9,7 @@
 * 我們可以讓head永遠指向list中的最小元素
 
 * Insert element with value X 時：
-  1. 若list爲空，則生成一個新node(X)作爲其head
+  1. 若list爲空，則生成一個新Node(X)作爲其head
   2. 若list非空，遍歷至最後一個<X的node，並進行插入，如果X比原本head的值更小就更新head
 
 ## Resources
