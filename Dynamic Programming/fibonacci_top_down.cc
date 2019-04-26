@@ -8,7 +8,6 @@ int fibonacci(unordered_map<int, int>& memo, int i) {
   if (memo.find(i) != memo.end()) {
     return memo[i];
   }
-
   int result = (i <= 2) ? 1 : (fibonacci(memo, i-2) + fibonacci(memo, i-1));
   memo[i] = result;
   return result;
