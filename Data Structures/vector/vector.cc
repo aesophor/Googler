@@ -38,7 +38,7 @@ void Vector<T>::pop_front() {
 
 
 template <typename T>
-void Vector<T>::insert(size_t index, T val) {
+void Vector<T>::insert(int index, T val) {
   if (size_ == capacity_) {
     resize(capacity_ * 2);
   }
@@ -47,7 +47,7 @@ void Vector<T>::insert(size_t index, T val) {
   // 1 2 4 5 6
   //     ^
   // 1 2 3 4 5 6
-  for (size_t i = size_; i > index; i--) {
+  for (int i = size_; i > index; i--) {
     data_[i] = data_[i - 1];
   }
   data_[index] = val;
@@ -55,8 +55,8 @@ void Vector<T>::insert(size_t index, T val) {
 }
 
 template <typename T>
-void Vector<T>::erase(size_t index) {
-  if (index >= size_) {
+void Vector<T>::erase(int index) {
+  if (index >= (int) size_) {
     throw std::out_of_range(kOutOfRangeMsg_);
   }
 
@@ -64,7 +64,7 @@ void Vector<T>::erase(size_t index) {
   // 1 2 4 5 6
   //     ^
   // 1 2 5 6
-  for (size_t i = index; i < size_ - 1; i++) {
+  for (int i = index; i < (int) size_ - 1; i++) {
     data_[i] = data_[i + 1];
   }
   size_--;
@@ -76,7 +76,7 @@ void Vector<T>::erase(size_t index) {
 
 template <typename T>
 void Vector<T>::remove(T val) {
-  for (size_t i = 0; i < size_; i++) {
+  for (int i = 0; i < size_; i++) {
     if (data_[i] == val) {
       erase(i);
       return;
@@ -85,9 +85,9 @@ void Vector<T>::remove(T val) {
 }
 
 template <typename T>
-size_t Vector<T>::find(T val) {
+int Vector<T>::find(T val) {
   // Linear search
-  for (size_t i = 0; i < size_; i++) {
+  for (int i = 0; i < size_; i++) {
     if (data_[i] == val) {
       return i;
     }
@@ -108,13 +108,18 @@ size_t Vector<T>::size() const {
 }
 
 template <typename T>
+size_t Vector<T>::capacity() const {
+  return capacity_;
+}
+
+template <typename T>
 bool Vector<T>::empty() const {
   return size_ == 0;
 }
 
 template <typename T>
-T Vector<T>::at(size_t index) const {
-  if (index >= size_) {
+T Vector<T>::at(int index) const {
+  if (index >= (int) size_) {
     throw std::out_of_range(kOutOfRangeMsg_);
   }
   return data_[index];
@@ -130,17 +135,13 @@ T Vector<T>::back() const {
   return at(size_ - 1);
 }
 
-template <typename T>
-size_t Vector<T>::capacity() const {
-  return capacity_;
-}
 
 template <typename T>
 std::string Vector<T>::to_string() const {
   std::string s;
-  for (size_t i = 0; i < size_; i++) {
+  for (int i = 0; i < (int) size_; i++) {
     s += std::to_string(data_[i]);
-    s += (i != size_ - 1) ? "->" : "";
+    s += (i != (int) size_ - 1) ? "->" : "";
   }
   return s;
 }
@@ -151,11 +152,11 @@ void Vector<T>::resize(size_t new_size) {
   new_size = (new_size <= DEFAULT_SIZE) ? DEFAULT_SIZE : new_size;
   T* new_data = new T[new_size];
 
-  size_t i = 0;
-  for (; i < size_; i++) {
+  int i = 0;
+  for (; i < (int) size_; i++) {
     new_data[i] = data_[i];
   }
-  for (; i < new_size; i++) {
+  for (; i < (int) new_size; i++) {
     new_data[i] = 0;
   }
 

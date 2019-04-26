@@ -14,17 +14,17 @@ class DoublyLinkedList {
   void pop_back();
   void pop_front();
 
-  void insert(size_t index, T val);
-  void erase(size_t index);
+  void insert(int index, T val);
+  void erase(int index);
   void remove(T val);
-  size_t find(T val);
+  int find(T val);
   void clear();
 
   size_t size() const;
   bool empty() const;
   T front() const;
   T back() const;
-  T at(size_t index) const;
+  T at(int index) const;
   std::string to_string() const;
 
  private:
