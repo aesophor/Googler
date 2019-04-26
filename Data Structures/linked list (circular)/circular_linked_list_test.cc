@@ -19,4 +19,10 @@ int main() {
 
   list.insert(3);
   cout << list.to_string() << endl;
+
+
+  list.erase(0);
+  cout << list.to_string() << endl;
+
+  cout << list.find(5) << endl;
 }

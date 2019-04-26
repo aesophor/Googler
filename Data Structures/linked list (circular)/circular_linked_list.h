@@ -16,6 +16,10 @@ class CircularLinkedList {
   virtual ~CircularLinkedList();
 
   void insert(T val);
+  void erase(int index);
+  int find(T val) const;
+
+  size_t size() const;
   std::string to_string() const;
 
  private:
@@ -25,6 +29,7 @@ class CircularLinkedList {
     Node* next;
   };
 
+  static const std::string kOutOfRangeMsg_;
   Node* head_; // always points to the min element
   size_t size_;
 };
