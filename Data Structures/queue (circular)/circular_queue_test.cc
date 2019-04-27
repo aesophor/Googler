@@ -6,6 +6,8 @@ using namespace std;
 
 int main() {
   CircularQueue<int> q;
+  cout << q.to_string() << endl;
+
 
   q.push(3);
   cout << q.to_string() << endl;
