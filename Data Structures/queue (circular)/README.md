@@ -1,4 +1,4 @@
-# Circular Queue (Circular Buffer)
+# Circular Queue (Circular Buffer, Ring Buffer)
 * A circular buffer, circular queue, cyclic buffer or ring buffer is a data structure that uses a single, **fixed-size** buffer as if it were **connected end-to-end**.
 
 * The usefulness of a circular buffer is that it does not need to have its elements shuffled around when one is consumed.
