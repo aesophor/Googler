@@ -6,11 +6,6 @@ template <typename T>
 CircularQueue<T>::CircularQueue(int capacity)
     : data_(new int[capacity]), head_(), tail_(), size_(capacity) {}
 
-template <typename T>
-CircularQueue<T>::~CircularQueue() {
-  delete[] data_;
-}
-
 
 template <typename T>
 void CircularQueue<T>::push(T val) {

@@ -2,6 +2,7 @@
 #define CIRCULAR_QUEUE_H_
 
 #include <string>
+#include <memory>
 
 #define DEFAULT_CAPACITY 5
 
@@ -9,7 +10,7 @@ template <typename T>
 class CircularQueue {
  public:
   CircularQueue(int capacity=DEFAULT_CAPACITY);
-  virtual ~CircularQueue();
+  virtual ~CircularQueue() = default;
 
   void push(T val);
   void pop();
@@ -22,7 +23,7 @@ class CircularQueue {
   std::string to_string() const;
 
  private:
-  T* data_;
+  std::unique_ptr<T[]> data_;
   int head_;
   int tail_;
   const size_t size_;
