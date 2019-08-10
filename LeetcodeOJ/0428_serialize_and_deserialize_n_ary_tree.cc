@@ -3,6 +3,10 @@
 #include <string>
 #include <vector>
 #include <stack>
+#include <queue>
+#include <sstream>
+
+using namespace std;
 
 struct TreeNode {
   TreeNode(int x) : val(x), children() {}
@@ -20,6 +24,7 @@ class Codec {
     
     std::string data;
     dfs(root, data);
+    data.erase(data.rfind(",b,"));
     std::cout << "serialized: " << data << std::endl;
     return data;
   }
@@ -29,40 +34,37 @@ class Codec {
     if (data.empty()) {
       return nullptr;
     }
-    
-    TreeNode* root = nullptr;
-    TreeNode* current = nullptr;
+
+    std::queue<std::string> val_queue;
+    for (const auto& token : Split(data, ',')) {
+      val_queue.push(token);
+    }
+
+    TreeNode* root = new TreeNode(std::stoi(val_queue.front()));
+    TreeNode* current = root;
+    val_queue.pop();
+
     std::stack<TreeNode*> st;
-    
-    do {
-      // Backtrack if 'b' is seen at the front of data.
-      if (data.front() == 'b') {
-        data.erase(0, 1);
+    st.push(root);
+
+    while (!val_queue.empty()) {
+      std::string val = val_queue.front();
+      std::cout << val << std::endl;
+      val_queue.pop();
+
+      // Backtrack
+      if (val == "b") {
         st.pop();
         current = st.top();
         continue;
       }
-      
-      // Extract next value and erase the
-      // processed characters from the data string.
-      size_t delim_pos = data.find_first_of(",b");
-      int val = std::stoi(data.substr(0, delim_pos));
-      
-      bool backtrack = data[delim_pos] == 'b';
-      data.erase(0, delim_pos + 1); // including the delimiter (, or b)
-      
-      TreeNode* new_node = new TreeNode(val);
-      if (!root) {
-        root = new_node;
-      } else {
-        current->children.push_back(new_node);
-      }
 
-      if (!backtrack) {
-        current = new_node;
-        st.push(new_node);   
-      }
-    } while (data.size() > 1);
+      TreeNode* new_node = new TreeNode(std::stoi(val));
+      current->children.push_back(new_node);
+
+      current = new_node;
+      st.push(new_node);
+    }
     
     return root;
   }
@@ -80,11 +82,22 @@ class Codec {
       dfs(child, data);
     }
     
-    // Backtrack
-    if (data.back() == ',') {
-      data.pop_back();
+    // Add 'b' which indicates when to backtrack
+    // during deserialization.
+    data += "b,";
+  }
+
+  vector<string> Split(const string& s, const char delimiter) {
+    std::stringstream ss(s);
+    string t;
+    vector<string> tokens;
+
+    while (std::getline(ss, t, delimiter)) {
+      if (t.length() > 0) {
+        tokens.push_back(t);
+      }
     }
-    data.push_back('b');
+    return tokens;
   }
 };
 
