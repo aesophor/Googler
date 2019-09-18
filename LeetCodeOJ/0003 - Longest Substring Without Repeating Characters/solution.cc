@@ -1,4 +1,4 @@
-// Runtime: 96 ms, faster than 15.07% of C++ online submissions for Longest Substring Without Repeating Characters.
+// Runtime: 12 ms, faster than 82.16% of C++ online submissions for Longest Substring Without Repeating Characters.
 // Memory Usage: 10.7 MB, less than 66.17% of C++ online submissions for Longest Substring Without Repeating Characters.
 
 class Solution {
@@ -17,7 +17,6 @@ class Solution {
       }
       
       result = std::max(result, i - left + 1);
-      std::cout << "left: " << left << " result: " << result << std::endl;
       m[c] = i; // update last appeared position
     }
     
