@@ -3,18 +3,17 @@
 
 class Foo {
  public:
-  Foo() : is_printed_{{false, false, false}} {}
-  virtual ~Foo() = default;
+  Foo() : is_printed_{{false, false}} {}
 
-  void first(function<void()> printFirst) {
+  void first(const function<void()>& printFirst) {
     // printFirst() outputs "first". Do not change or remove this line.
     printFirst();
     is_printed_[0] = true;
   }
 
-  void second(function<void()> printSecond) {
+  void second(const function<void()>& printSecond) {
     while (!is_printed_[0]) {
-      ;
+      this_thread::sleep_for(std::chrono::nanoseconds(1));
     }
     
     // printSecond() outputs "second". Do not change or remove this line.
@@ -22,14 +21,14 @@ class Foo {
     is_printed_[1] = true;
   }
 
-  void third(function<void()> printThird) {
+  void third(const function<void()>& printThird) {
     while (!is_printed_[1]) {
-      ;
+      this_thread::sleep_for(std::chrono::nanoseconds(1));
     }
     // printThird() outputs "third". Do not change or remove this line.
     printThird();
   }
   
  private:
-  std::array<bool, 3> is_printed_;
+  std::array<bool, 2> is_printed_;
 };
