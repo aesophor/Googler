@@ -7,25 +7,32 @@ class FooBar {
 
   void foo(const function<void()>& printFoo) {
     for (int i = 0; i < n_; i++) {
-      while (!foo_should_print_) {
-        this_thread::yield();
-      }
+      std::unique_lock<std::mutex> l(m_);
+      cv_.wait(l, [=]() { return foo_should_print_; });
+      
       printFoo(); // outputs "foo"
+      
       foo_should_print_ = false;
+      cv_.notify_one();
     }
   }
 
   void bar(const function<void()>& printBar) {
     for (int i = 0; i < n_; i++) {
-      while (foo_should_print_) {
-        this_thread::yield();
-      }
+      std::unique_lock<std::mutex> l(m_);
+      cv_.wait(l, [=]() { return !foo_should_print_; });
+      
       printBar(); // outputs "bar"
+      
       foo_should_print_ = true;
+      cv_.notify_one();
     }
   }
   
  private:
   int n_;
   bool foo_should_print_;
+  
+  std::mutex m_;
+  std::condition_variable cv_;
 };
