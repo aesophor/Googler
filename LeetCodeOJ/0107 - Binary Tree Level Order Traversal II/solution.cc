@@ -17,27 +17,25 @@ class Solution {
       return {};
     }
     
+    std::vector<std::vector<int>> result;
     std::queue<TreeNode*> q;
     q.push(root);
     
     while (!q.empty()) {
       size_t qSize = q.size();
-      result_.push_back({});
+      result.push_back({});
       
       for (size_t i = 0; i < qSize; i++) {
         TreeNode* node = q.front();
         q.pop();
-        result_.back().push_back(node->val);
+        result.back().push_back(node->val);
 
         if (node->left) q.push(node->left);
         if (node->right) q.push(node->right);   
       }
     }
     
-    std::reverse(result_.begin(), result_.end());
-    return result_;
+    std::reverse(result.begin(), result.end());
+    return result;
   }
-
- private:
-  vector<vector<int>> result_;
 };
