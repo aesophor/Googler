@@ -1,6 +1,8 @@
 // Runtime: 16 ms, faster than 72.90% of C++ online submissions for Longest Substring Without Repeating Characters.
 // Memory Usage: 11.1 MB, less than 43.28% of C++ online submissions for Longest Substring Without Repeating Characters.
 
+// std::unordered_map::clear is fucking expensive. Avoid it at all cost!!!
+
 class Solution {
  public:
   int lengthOfLongestSubstring(string s) {
