@@ -24,7 +24,9 @@ class Solution {
     }
     
     current_depth_++;
-    max_depth_ = std::max(max_depth_, current_depth_);
+    if (!node->left && !node->right) {
+      max_depth_ = std::max(max_depth_, current_depth_);  
+    }
     
     dfs(node->left);
     dfs(node->right);
