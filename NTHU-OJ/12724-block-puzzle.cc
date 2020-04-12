@@ -77,6 +77,11 @@ class Matrix {
 bool result = false;
 
 void solve(Matrix puzzle_map, const vector<Matrix>& pieces, int current) {
+  if (puzzle_map.isEmpty()) {
+    result = true;
+    return;
+  }
+
   // Try to place current piece into all possible locations.
   for (int i = 0; i < puzzle_map.getHeight(); i++) {
     for (int j = 0; j < puzzle_map.getWidth(); j++) {
@@ -85,11 +90,8 @@ void solve(Matrix puzzle_map, const vector<Matrix>& pieces, int current) {
       Matrix puzzle_map_copy = puzzle_map;
 
       bool piece_can_fit = puzzle_map_copy.placePieceAt(pieces[current], i, j);
+
       if (piece_can_fit) {
-        if (puzzle_map_copy.isEmpty()) {
-          result = true;
-          return;
-        }
         solve(puzzle_map_copy, pieces, current + 1);
       }
     }
