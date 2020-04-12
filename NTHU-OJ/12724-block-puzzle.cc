@@ -82,6 +82,10 @@ void solve(Matrix puzzle_map, const vector<Matrix>& pieces, int current) {
     return;
   }
 
+  if (current >= pieces.size()) {
+    return;
+  }
+
   // Try to place current piece into all possible locations.
   for (int i = 0; i < puzzle_map.getHeight(); i++) {
     for (int j = 0; j < puzzle_map.getWidth(); j++) {
