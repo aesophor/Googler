@@ -1,5 +1,5 @@
-// Runtime: 84 ms, faster than 62.82% of C++ online submissions for Longest Palindromic Substring.
-// Memory Usage: 22.3 MB, less than 38.03% of C++ online submissions for Longest Palindromic Substring.
+// Runtime: 68 ms, faster than 70.52% of C++ online submissions for Longest Palindromic Substring.
+// Memory Usage: 6.7 MB, less than 80.80% of C++ online submissions for Longest Palindromic Substring.
 
 class Solution {
  public:
@@ -8,34 +8,39 @@ class Solution {
       return s;
     }
     
-    // Result
-    //int pos = 0;
-    //int len = 0;
+    // Final Result
+    int pos = 0;
+    int len = 0;
     
-    string ret;
-    string result;
+    // Result of each loop iteration is stored here.
+    // Declared outside of the loops for performance sake.
+    pair<int, int> result;
+    
     
     for (size_t i = 0; i < s.size(); i++) {
       result = findOddPalindromicSubstring(s, i);
-      if (result.size() > ret.size()) {
-        ret = result;
-      }
+      if (result.second > len) {
+        pos = result.first;
+        len = result.second;
+      } 
     }
     
     for (size_t i = 0; i < s.size() - 1; i++) { 
       result = findEvenPalindromicSubstring(s, i);
-      if (result.size() > ret.size()) {
-        ret = result;
+      if (result.second > len) {
+        pos = result.first;
+        len = result.second;
       }
     }
     
-    return ret;
+    return s.substr(pos, len);
   }
   
  private:
   // Attempt to expand from `centerIndex` and obtain
   // the longest palindromic substring.
-  string findOddPalindromicSubstring(const string& s, int centerIndex) {
+  pair<int,int>
+  findOddPalindromicSubstring(const string& s, int centerIndex) {
     int left = centerIndex;
     int right = centerIndex;
     
@@ -49,13 +54,14 @@ class Solution {
     
     left++;
     right--;
-    return s.substr(left, right - left + 1);
+    return {left, right - left + 1};
   }
   
   
   // Attempt to expand from `centerIndex` and `centerIndex + 1` and obtain
   // the longest palindromic substring.
-  string findEvenPalindromicSubstring(const string& s, int centerIndex) {
+  pair<int, int>
+  findEvenPalindromicSubstring(const string& s, int centerIndex) {
     int left = centerIndex;
     int right = centerIndex + 1;
     
@@ -69,6 +75,6 @@ class Solution {
     
     left++;
     right--;
-    return s.substr(left, right - left + 1);
+    return {left, right - left + 1};
   }
 };
