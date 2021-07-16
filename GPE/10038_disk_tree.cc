@@ -51,6 +51,19 @@ void dfs(Node* node, const int depth) {
   }
 }
 
+vector<string> split(const string& s, const char delim) {
+  stringstream ss(s);
+  vector<string> tokens;
+  string token;
+
+  while (getline(ss, token, delim)) {
+    if (token.size() > 0) {
+      tokens.push_back(token);
+    }
+  }
+  return tokens;
+}
+
 
 int main() {
   int N;
@@ -63,18 +76,10 @@ int main() {
     cin >> filename;
 
     Node* current = root_node;
-    size_t begin = 0;
+    vector<string> parts = split(filename, '\\');
 
-    while (begin != filename.npos) {
-      size_t next = filename.find('\\', begin);
-      string component_name = filename.substr(begin, next - begin);
-
-      current = current->get_or_create_child(component_name);
-
-      if (next == filename.npos) {
-        break;
-      }
-      begin = next + 1;
+    for (int i = 0; i < (int) parts.size(); i++) {
+      current = current->get_or_create_child(parts[i]);
     }
   }
 

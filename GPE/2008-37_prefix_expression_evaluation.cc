@@ -63,7 +63,7 @@ int main() {
     vector<string> tokens;
     string token;
 
-    while (sin >> token) {
+    while (getline(sin, token, ' ')) {
       tokens.push_back(token);
     }
 
