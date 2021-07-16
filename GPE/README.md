@@ -6,7 +6,7 @@ Include all stuff
 ```
 
 Split a string into vector<string> by delimiter
-```
+```cpp
 vector<string> split(const string& s, const char delim) {
   stringstream ss(s);
   vector<string> tokens;
