@@ -13,7 +13,7 @@ vector<string> split(const string& s, const char delim) {
   string token;
 
   while (getline(ss, token, delim)) {
-    if (token.size() > 1) {
+    if (token.size() > 0) {
       tokens.push_back(token);
     }
   }

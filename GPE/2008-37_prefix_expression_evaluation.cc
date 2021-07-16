@@ -55,18 +55,23 @@ void solve(const vector<string>& tokens) {
   }
 }
 
+vector<string> split(const string& s, const char delim) {
+  stringstream ss(s);
+  vector<string> tokens;
+  string token;
+
+  while (getline(ss, token, delim)) {
+    if (token.size() > 0) {
+      tokens.push_back(token);
+    }
+  }
+  return tokens;
+}
+
 int main() {
   string line;
 
   while (getline(cin, line) && line != ".") {
-    stringstream sin(line);
-    vector<string> tokens;
-    string token;
-
-    while (getline(sin, token, ' ')) {
-      tokens.push_back(token);
-    }
-
-    solve(tokens);
+    solve(split(line, ' '));
   }
 }
